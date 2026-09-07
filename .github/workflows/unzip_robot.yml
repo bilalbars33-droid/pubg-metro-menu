@@ -1,0 +1,24 @@
+name: Extract Mod Menu Folders
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Unzip project files
+      run: |
+        unzip -o R3DNETWORK-main.zip
+        rm R3DNETWORK-main.zip
+
+    - name: Commit and Push extracted folders
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add .
+        git commit -m "Extract app and gradle folders from zip" || exit 0
+        git push
+        
