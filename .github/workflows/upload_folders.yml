@@ -1,0 +1,14 @@
+name: Upload Missing Folders
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Info
+      run: echo "Bu arac yardimiyla app ve gradle klasorlerini yukleyecegiz."
+      
